@@ -21,6 +21,3 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: Bash@3
-  inputs:
-    filePath: '/home/ubuntu/ansible.sh'
