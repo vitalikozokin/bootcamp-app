@@ -36,9 +36,9 @@ steps:
     vstsFeedPackagePublish: 'new-artifact'
     versionOption: 'patch'
     
-- jobs: 
-  - deployment:
-    displayName: VMDeploy
-    environment: 
-      name: staging
-      resourceYpe: VirtualMachine 
+jobs:
+- deployment: VMDeploy
+  displayName: deploy
+  environment:
+    name: staging
+    resourceType: VirtualMachine
