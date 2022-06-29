@@ -10,12 +10,14 @@ pool:
  name: bootcamp
 # pool:
 #   vmImage: ubuntu-latest
+
 jobs:
 - deployment: VMDeploy
   displayName: deploy
   environment:
     name: staging
     resourceType: VirtualMachine
+    tags: web
 
 steps:
 - task: NodeTool@0
