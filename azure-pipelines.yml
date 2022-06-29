@@ -10,6 +10,12 @@ pool:
  name: bootcamp
 # pool:
 #   vmImage: ubuntu-latest
+jobs:
+- deployment: VMDeploy
+  displayName: deploy
+  environment:
+    name: staging
+    resourceType: VirtualMachine
 
 steps:
 - task: NodeTool@0
@@ -36,9 +42,3 @@ steps:
     vstsFeedPackagePublish: 'new-artifact'
     versionOption: 'patch'
     
-jobs:
-- deployment: VMDeploy
-  displayName: deploy
-  environment:
-    name: staging
-    resourceType: VirtualMachine
