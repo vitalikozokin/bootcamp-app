@@ -36,3 +36,10 @@ steps:
     vstsFeedPackagePublish: 'new-artifact'
     versionOption: 'patch'
     
+- jobs: 
+  - deployment:
+    displayName: VMDeploy
+    displayName: deploy
+    environment: 
+      name: staging
+      resourceYpe: VirtualMachine 
