@@ -21,19 +21,18 @@ steps:
     npm install
     # npm run build
   displayName: 'npm install and build'
-
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: '*.zip' 
-    targetFolder: $(Build.ArtifactStagingDirectory)
-  displayName: 'Copy package' 
-
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '*.zip'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+       
 - task: UniversalPackages@0
-  displayName: Universal Publish
   inputs:
-    command: publish
+    command: 'publish'
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
-    vstsFeedPublish: 'bootcamp/new-artifact'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '70436a40-3579-4d23-84d2-43facc47d322/efb60d3a-3857-4e66-9d55-9b6603ae32f1'
     vstsFeedPackagePublish: 'new-artifact'
+    versionOption: 'patch'
     
