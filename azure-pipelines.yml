@@ -25,19 +25,15 @@ steps:
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
-    contents: '*.tgz' 
-    targetFolder: $(Build.ArtifactStagingDirectory)/npm
-  displayName: 'Copy npm package'
+    contents: '*.zip' 
+    targetFolder: $(Build.ArtifactStagingDirectory)
+  displayName: 'Copy package' 
 
-- task: CopyFiles@2
+- task: UniversalPackages@0
+  displayName: Universal Publish
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: 'package.json' 
-    targetFolder: $(Build.ArtifactStagingDirectory)/npm
-  displayName: 'Copy package.json'   
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/npm'
-    artifactName: npm
-  displayName: 'Publish npm artifact'
+    command: publish
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    vstsFeedPublish: 'bootcamp/new-artifact'
+    vstsFeedPackagePublish: 'new-artifact'
+    
