@@ -43,14 +43,14 @@ steps:
     vstsFeedPublish: '70436a40-3579-4d23-84d2-43facc47d322/efb60d3a-3857-4e66-9d55-9b6603ae32f1'
     vstsFeedPackagePublish: 'new-artifact'
     versionOption: 'patch'
-jobs:
-- deployment: VMDeploy
-  displayName: Deploy to VM
-  environment: 
-    name: staging
-    resourceType: VirtualMachine
-  strategy:
-    runOnce:
-      deploy:   
-          steps:
-          - script: echo "Hello world"   
+- task:
+  - deployment: VMDeploy
+    displayName: Deploy to VM
+    environment: 
+      name: staging
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:   
+            steps:
+            - script: echo "Hello world"   
