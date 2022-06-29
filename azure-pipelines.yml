@@ -11,13 +11,13 @@ pool:
 # pool:
 #   vmImage: ubuntu-latest
 
-# jobs:
-# - deployment: VMDeploy
-#   displayName: deploy
-#   environment:
-#     name: staging
-#     resourceType: VirtualMachine
-#     tags: web
+jobs:
+- deployment: VMDeploy
+  displayName: deploy
+  environment:
+    name: staging
+    resourceType: VirtualMachine
+    tags: web
 
 steps:
 - task: NodeTool@0
@@ -54,3 +54,14 @@ steps:
         deploy:   
             steps:
             - script: echo "Hello world"   
+# jobs:
+# - deployment: VMDeploy
+#   displayName: Deploy to VM
+#   environment: 
+#    name: ContosoDeploy
+#    resourceType: VirtualMachine
+#   strategy:
+#      runOnce:
+#         deploy:   
+#           steps:
+#             - script: echo "Hello world"
