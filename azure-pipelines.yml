@@ -39,7 +39,6 @@ steps:
 - jobs: 
   - deployment:
     displayName: VMDeploy
-    displayName: deploy
     environment: 
       name: staging
       resourceYpe: VirtualMachine 
