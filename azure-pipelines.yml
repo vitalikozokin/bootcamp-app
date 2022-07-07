@@ -21,7 +21,7 @@ stages:
           containerRegistry: 'container registery'
           repository: 'vitalicontainerregistery'
           command: 'buildAndPush'
-          Dockerfile: '**/Dockerfile'
+          Dockerfile: $(Agent.BuildDirectory)/Dockerfile
 
 
 
