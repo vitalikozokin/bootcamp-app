@@ -21,7 +21,7 @@ stages:
           containerRegistry: 'container registery'
           repository: 'vitalicontainerregistery'
           command: 'buildAndPush'
-          Dockerfile: '/home/ubuntu/docker/Dockerfile'
+          Dockerfile: '/home/ubuntu/docker/'
 
 
 
