@@ -1,46 +1,27 @@
-# Node.js
 
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+name: project-CI
 
 trigger:
 - master
+- feature/*
+
 pool:
  name: bootcamp
-# pool:
-#   vmImage: ubuntu-latest
 
-# jobs:
-# - deployment: VMDeploy
-#   displayName: deploy
-#   environment:
-#     name: staging
-#     resourceType: VirtualMachine
-#     tags: web
+stages:
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
+- stage: CI
+  jobs:
+  - job:
+    workspace:
+      clean: all
+    steps:
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'container registery'
+          repository: 'vitalicontainerregistery'
+          command: 'buildAndPush'
+          Dockerfile: '/home/ubuntu/docker/Dockerfile'
 
-- script: |
-    npm install
-    # npm run build
-  displayName: 'npm install and build'
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '*.zip'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-       
-- task: UniversalPackages@0
-  inputs:
-    command: 'publish'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)'
-    feedsToUsePublish: 'internal'
-    vstsFeedPublish: '70436a40-3579-4d23-84d2-43facc47d322/efb60d3a-3857-4e66-9d55-9b6603ae32f1'
-    vstsFeedPackagePublish: 'new-artifact'
-    versionOption: 'patch'
+
 
