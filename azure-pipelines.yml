@@ -21,7 +21,7 @@ stages:
       inputs:
         SourceFolder: '$(Agent.BuildDirectory)/s'
         Contents: '**'
-        TargetFolder: '/home/ubuntu/docker/'
+        TargetFolder: '/home/ubuntu/docker/boopcamp-app'
         OverWrite: true
 
     - task: Docker@2
