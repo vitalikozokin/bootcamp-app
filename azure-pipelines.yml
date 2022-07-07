@@ -15,13 +15,21 @@ stages:
   - job:
     workspace:
       clean: all
+
     steps:
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'container registery'
-          repository: 'vitalicontainerregistery'
-          command: 'buildAndPush'
-          Dockerfile: /home/ubuntu/docker/Dockerfile
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Agent.BuildDirectory)/s'
+        Contents: '**'
+        TargetFolder: '/home/ubuntu/docker'
+        OverWrite: true
+
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'container registery'
+        repository: 'vitalicontainerregistery'
+        command: 'buildAndPush'
+        Dockerfile: /home/ubuntu/docker/Dockerfile
 
 
 
